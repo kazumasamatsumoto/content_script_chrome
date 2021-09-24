@@ -6,9 +6,6 @@
     "default_icon": "logo192.png",
     "default_popup": "index.html"
   },
-  "background": {
-    "scripts": ["background.js"]
-  },
   "content_scripts": [
     {
       "matches": ["http://*/*", "https://*/*"],

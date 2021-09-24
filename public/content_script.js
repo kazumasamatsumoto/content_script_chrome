@@ -6,5 +6,3 @@ chrome.runtime.onMessage.addListener(function (response, sender, sendResponse) {
   app.textContent = response;
   document.body.appendChild(app);
 });
-
-chrome.runtime.sendMessage("Hello world");
