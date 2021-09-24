@@ -1,24 +1,31 @@
 /* global chrome */
 import "./App.css";
-import { useEffect } from "react";
+import { useState } from "react";
 
 function App() {
-  // ユーザー操作とか任意のタイミングで以下の関数を叩く
-  useEffect(() => {
-    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-      chrome.tabs.sendMessage(tabs[0].id, {
-        key: "sample", // 任意のkey名とvalueで良い
-      });
-    });
-  }, []);
+  const [email, setEmail] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(email);
+    chrome.runtime.sendMessage(email);
+  };
 
   return (
     <div className="App">
       <header className="App-header">
-        <label>
-          Name:
-          <input type="text" name="name" />
-        </label>
+        <form onSubmit={handleSubmit}>
+          <label>
+            Name:
+            <input
+              type="text"
+              name="name"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input type="submit" value="Submit" />
+          </label>
+        </form>
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
