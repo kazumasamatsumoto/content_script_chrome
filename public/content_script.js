@@ -1,6 +1,4 @@
-function sample() {
-  console.log("コンテントスクリプト");
-  document.getElementsByTagName("body");
-}
-
-sample();
+const app = document.createElement("div");
+app.id = "my-extension-root";
+app.textContent = "sample";
+document.body.appendChild(app);
