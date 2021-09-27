@@ -1,11 +1,13 @@
 /* global chrome */
 
 chrome.runtime.onMessage.addListener(function (response, sender, sendResponse) {
-  const test = document.getElementById("wO nr l1");
+  let test = document.getElementsByTagName("h1")[0];
   console.log("test", test);
+  console.log(test.textContent);
+  test.textContent = response;
   const app = document.createElement("div");
   app.id = "my-extension-root";
   app.textContent = response;
-  test.insertBefore(app);
+  document.body.appendChild(app);
   // document.body.appendChild(app);
 });
